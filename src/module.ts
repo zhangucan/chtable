@@ -81,9 +81,9 @@ class TablePanelCtrl extends MetricsPanelCtrl {
   }
 
   issueQueries(datasource) {
-    if (datasource.type !== 'clickhouse') {
-        throw {message: 'Plugin CHTable is working only with ClickHouse datasource.'};
-    }
+    // if (datasource.type !== 'clickhouse') {
+    //     throw {message: 'Plugin CHTable is working only with ClickHouse datasource.'};
+    // }
 
     this.pageIndex = 0;
     this.datasource = datasource;
@@ -263,7 +263,7 @@ class TablePanelCtrl extends MetricsPanelCtrl {
       if (ctrl.pageCache[ctrl.pageIndex] === undefined) {
           ctrl.pageCache[ctrl.pageIndex] = ctrl.table.rows;
       }
-      let rows = ctrl.pageCache[ctrl.pageIndex]
+      let rows = ctrl.pageCache[ctrl.pageIndex];
       tbodyElem.html(ctrl.renderer.render(rows));
     }
 

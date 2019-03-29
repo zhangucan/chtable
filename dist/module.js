@@ -91,9 +91,9 @@ System.register(['lodash', 'jquery', 'app/plugins/sdk', './transformers', './edi
                     actions.push({ text: 'Export CSV', click: 'ctrl.exportCsv()' });
                 };
                 TablePanelCtrl.prototype.issueQueries = function (datasource) {
-                    if (datasource.type !== 'clickhouse') {
-                        throw { message: 'Plugin CHTable is working only with ClickHouse datasource.' };
-                    }
+                    // if (datasource.type !== 'clickhouse') {
+                    //     throw {message: 'Plugin CHTable is working only with ClickHouse datasource.'};
+                    // }
                     this.pageIndex = 0;
                     this.datasource = datasource;
                     if (this.panel.transform === 'annotations') {

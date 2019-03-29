@@ -1,6 +1,6 @@
 ///<reference path="../node_modules/grafana-sdk-mocks/app/headers/common.d.ts" />
-System.register(['lodash', 'app/core/time_series2', 'app/core/table_model', './flatten'], function(exports_1) {
-    var lodash_1, time_series2_1, table_model_1, flatten_1;
+System.register(['lodash', 'app/core/time_series2', 'app/core/table_model', './flatten', './util'], function(exports_1) {
+    var lodash_1, time_series2_1, table_model_1, flatten_1, util_1;
     var transformers;
     function transformDataToTable(data, panel) {
         var model = new table_model_1.default();
@@ -27,9 +27,24 @@ System.register(['lodash', 'app/core/time_series2', 'app/core/table_model', './f
             },
             function (flatten_1_1) {
                 flatten_1 = flatten_1_1;
+            },
+            function (util_1_1) {
+                util_1 = util_1_1;
             }],
         execute: function() {
             transformers = {};
+            transformers['timeseries_obj_to_rows'] = {
+                description: 'Time obj series to rows',
+                getColumns: function () {
+                    return [];
+                },
+                transform: function (data, panel, model) {
+                    model.columns.push({ text: 'Time', type: 'date' });
+                    (_a = model.columns).push.apply(_a, util_1.getColumns(data));
+                    (_b = model.rows).push.apply(_b, util_1.getValues(data));
+                    var _a, _b;
+                },
+            };
             transformers['timeseries_to_rows'] = {
                 description: 'Time series to rows',
                 getColumns: function () {

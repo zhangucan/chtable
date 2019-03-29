@@ -4,8 +4,21 @@ import _ from 'lodash';
 import TimeSeries from 'app/core/time_series2';
 import TableModel from 'app/core/table_model';
 import flatten from './flatten';
+import { getColumns, getValues } from './util';
 
 var transformers = {};
+
+transformers['timeseries_obj_to_rows'] = {
+  description: 'Time obj series to rows',
+  getColumns: function() {
+    return [];
+  },
+  transform: function(data, panel, model) {
+    model.columns.push({text: 'Time', type: 'date'});
+    model.columns.push(...getColumns(data));
+    model.rows.push(...getValues(data));
+  },
+};
 
 transformers['timeseries_to_rows'] = {
   description: 'Time series to rows',
