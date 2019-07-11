@@ -136,14 +136,8 @@ System.register(['lodash', 'moment', 'app/core/utils/kbn'], function(exports_1) 
                                 // if (str === "") {
                                 //     return v;
                                 // }
-                                var jsonString = self.isJSON(v);
                                 // To prevent a number from being stringified
-                                if (jsonString.success) {
-                                    return '<pre>' + lodash_1.default.escape(JSON.stringify(jsonString.result, null, 2)) + '</pre>';
-                                }
-                                else {
-                                    return jsonString.result;
-                                }
+                                return '<pre>' + lodash_1.default.escape(JSON.stringify(v, null, 2)) + '</pre>';
                             };
                         default:
                             return function (value) {

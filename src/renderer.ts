@@ -140,13 +140,8 @@ export class TableRenderer {
                 // if (str === "") {
                 //     return v;
                 // }
-                const jsonString = self.isJSON(v);
                 // To prevent a number from being stringified
-                if (jsonString.success) {
-                    return '<pre>' + _.escape(JSON.stringify(jsonString.result, null, 2)) + '</pre>';
-                } else {
-                    return jsonString.result;
-                }
+                return '<pre>' + _.escape(JSON.stringify(v, null, 2)) + '</pre>';
             };
         default:
             return (value) => {
