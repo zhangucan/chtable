@@ -133,16 +133,16 @@ export class TableRenderer {
             };*/
         case 'json-plain':
             return function (v) {
-                if (typeof v !== 'string') {
-                    return v;
-                }
-                var str = self.betweenBraces(v);
-                if (str === "") {
-                    return v;
-                }
-                const jsonString = self.isJSON(str);
+                // if (typeof v !== 'string') {
+                //     return v;
+                // }
+                // var str = self.betweenBraces(v);
+                // if (str === "") {
+                //     return v;
+                // }
+                const jsonString = self.isJSON(v);
                 // To prevent a number from being stringified
-                if (jsonString.success && isNaN(Number.parseFloat(jsonString.result))) {
+                if (jsonString.success) {
                     return '<pre>' + _.escape(JSON.stringify(jsonString.result, null, 2)) + '</pre>';
                 } else {
                     return jsonString.result;

@@ -129,16 +129,16 @@ System.register(['lodash', 'moment', 'app/core/utils/kbn'], function(exports_1) 
                              };*/
                         case 'json-plain':
                             return function (v) {
-                                if (typeof v !== 'string') {
-                                    return v;
-                                }
-                                var str = self.betweenBraces(v);
-                                if (str === "") {
-                                    return v;
-                                }
-                                var jsonString = self.isJSON(str);
+                                // if (typeof v !== 'string') {
+                                //     return v;
+                                // }
+                                // var str = self.betweenBraces(v);
+                                // if (str === "") {
+                                //     return v;
+                                // }
+                                var jsonString = self.isJSON(v);
                                 // To prevent a number from being stringified
-                                if (jsonString.success && isNaN(Number.parseFloat(jsonString.result))) {
+                                if (jsonString.success) {
                                     return '<pre>' + lodash_1.default.escape(JSON.stringify(jsonString.result, null, 2)) + '</pre>';
                                 }
                                 else {
