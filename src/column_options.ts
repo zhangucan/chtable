@@ -58,7 +58,7 @@ export class ColumnOptionsCtrl {
     this.onColorChange = this.onColorChange.bind(this);
   }
 
-  render() {debugger
+  render() {debugger;
     this.panelCtrl.render();
   }
 

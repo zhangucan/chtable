@@ -115,23 +115,23 @@ export class TableRenderer {
 
                 return valueFormatter(v, column.style.decimals, null);
             };
-       /* case 'json-obj':
-            return function (v) {
-                if (typeof v !== 'string') {
-                    return v;
-                }
-                var obj = self.betweenBraces(v);
-                if (obj === "") {
-                    return v;
-                }
-                angular.element(document).injector().invoke(function ($compile) {
-                    var scope = self.scope.$new(true);
-                    scope.jsonObj = JSON.parse(obj);
-                    v = $compile('<json-tree root-name="root" object="jsonObj" start-expanded="false"></json-tree>')(scope);
-                });
-                return v;
-            };
-        case 'json-plain':
+      //  case 'json-obj':
+      //       return function (v) {
+      //           if (typeof v !== 'string') {
+      //               return v;
+      //           }
+      //           var obj = self.betweenBraces(v);
+      //           if (obj === "") {
+      //               return v;
+      //           }
+      //           angular.element(document).injector().invoke(function ($compile) {
+      //               var scope = self.scope.$new(true);
+      //               scope.jsonObj = JSON.parse(obj);
+      //               v = $compile('<json-tree root-name="root" object="jsonObj" start-expanded="false"></json-tree>')(scope);
+      //           });
+      //           return v;
+      //       };
+       case 'json-plain':
             return function (v) {
                 if (typeof v !== 'string') {
                     return v;
@@ -147,7 +147,7 @@ export class TableRenderer {
                 } else {
                     return jsonString.result;
                 }
-            };*/
+            };
         default:
             return (value) => {
                 return this.defaultCellFormatter(value, column.style);
