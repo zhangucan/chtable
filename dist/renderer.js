@@ -126,24 +126,25 @@ System.register(['lodash', 'moment', 'app/core/utils/kbn'], function(exports_1) 
                                      v = $compile('<json-tree root-name="root" object="jsonObj" start-expanded="false"></json-tree>')(scope);
                                  });
                                  return v;
-                             };
-                         case 'json-plain':
-                             return function (v) {
-                                 if (typeof v !== 'string') {
-                                     return v;
-                                 }
-                                 var str = self.betweenBraces(v);
-                                 if (str === "") {
-                                     return v;
-                                 }
-                                 const jsonString = self.isJSON(str);
-                                 // To prevent a number from being stringified
-                                 if (jsonString.success && isNaN(Number.parseFloat(jsonString.result))) {
-                                     return '<pre>' + _.escape(JSON.stringify(jsonString.result, null, 2)) + '</pre>';
-                                 } else {
-                                     return jsonString.result;
-                                 }
                              };*/
+                        case 'json-plain':
+                            return function (v) {
+                                if (typeof v !== 'string') {
+                                    return v;
+                                }
+                                var str = self.betweenBraces(v);
+                                if (str === "") {
+                                    return v;
+                                }
+                                var jsonString = self.isJSON(str);
+                                // To prevent a number from being stringified
+                                if (jsonString.success && isNaN(Number.parseFloat(jsonString.result))) {
+                                    return '<pre>' + lodash_1.default.escape(JSON.stringify(jsonString.result, null, 2)) + '</pre>';
+                                }
+                                else {
+                                    return jsonString.result;
+                                }
+                            };
                         default:
                             return function (value) {
                                 return _this.defaultCellFormatter(value, column.style);

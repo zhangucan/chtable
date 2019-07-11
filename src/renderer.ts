@@ -130,7 +130,7 @@ export class TableRenderer {
                     v = $compile('<json-tree root-name="root" object="jsonObj" start-expanded="false"></json-tree>')(scope);
                 });
                 return v;
-            };
+            };*/
         case 'json-plain':
             return function (v) {
                 if (typeof v !== 'string') {
@@ -147,7 +147,7 @@ export class TableRenderer {
                 } else {
                     return jsonString.result;
                 }
-            };*/
+            };
         default:
             return (value) => {
                 return this.defaultCellFormatter(value, column.style);

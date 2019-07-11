@@ -42,7 +42,7 @@ System.register(['lodash', 'app/core/utils/kbn'], function(exports_1) {
                         { text: 'String', value: 'string' },
                         { text: 'Date', value: 'date' },
                         // {text: 'JSON Obj', value: 'json-obj'},
-                        // {text: 'JSON Plain', value: 'json-plain'},
+                        { text: 'JSON Plain', value: 'json-plain' },
                         { text: 'Hidden', value: 'hidden' }
                     ];
                     this.fontSizes = ['80%', '90%', '100%', '110%', '120%', '130%', '150%', '160%', '180%', '200%', '220%', '250%'];
